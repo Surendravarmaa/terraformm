@@ -1,0 +1,19 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "6.39.0"
+    }
+  }
+  backend "s3" {
+    bucket = "surendra-remote-state"
+    key    = "dynamic-block"
+    region = "us-east-1"
+    dynamodb_table = "surendra-locking"
+  }
+}
+
+#provide authentication here
+provider "aws" {
+    region = "us-east-1"
+}
